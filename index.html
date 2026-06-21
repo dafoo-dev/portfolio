@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Alsiddig | Senior Technical Consultant</title>
+<style>
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --border: 214.3 31.8% 91.4%;
+  --radius: 0.5rem;
+  --bg-primary: 255, 255, 255;
+  --bg-secondary: 249, 250, 251;
+  --text-primary: 17, 24, 39;
+  --text-secondary: 107, 114, 128;
+}
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --border: 217.2 32.6% 17.5%;
+  --bg-primary: 9, 9, 11;
+  --bg-secondary: 24, 24, 27;
+  --text-primary: 250, 250, 250;
+  --text-secondary: 161, 161, 170;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background-color:hsl(var(--background));color:hsl(var(--foreground));line-height:1.6;transition:background-color .3s,color .3s;overflow-x:hidden}
+a{color:hsl(var(--primary));text-decoration:none}
+img{max-width:100%;height:auto}
+.section-container{max-width:80rem;margin:0 auto;padding:4rem 1rem}
+@media(min-width:640px){.section-container{padding-left:1.5rem;padding-right:1.5rem}}
+@media(min-width:768px){.section-container{padding-top:6rem;padding-bottom:6rem}}
+@media(min-width:1024px){.section-container{padding-left:2rem;padding-right:2rem}}
+.section-title{font-size:2.25rem;font-weight:700;text-align:center;margin-bottom:3rem;color:hsl(var(--foreground))}
+@media(min-width:768px){.section-title{font-size:2.5rem}}
+.gradient-text{background:linear-gradient(to right,#3b82f6,#6366f1,#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border-bottom:1px solid hsl(var(--border));transition:background .3s}
+.dark .site-header{background:rgba(9,9,11,.8)}
+.header-inner{max-width:80rem;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:4rem}
+@media(min-width:640px){.header-inner{padding:0 1.5rem}}
+@media(min-width:1024px){.header-inner{padding:0 2rem}}
+.site-logo{font-size:1.25rem;font-weight:700;color:hsl(var(--foreground));text-decoration:none}
+.site-logo:hover{color:hsl(var(--primary))}
+.nav-links{display:none;list-style:none;gap:2rem}
+@media(min-width:768px){.nav-links{display:flex}}
+.nav-links a{font-size:.875rem;color:hsl(var(--foreground) / .7);text-decoration:none;transition:color .2s;position:relative}
+.nav-links a:hover,.nav-links a.active{color:hsl(var(--foreground))}
+.nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:linear-gradient(to right,#3b82f6,#6366f1,#a855f7);border-radius:1px}
+.nav-controls{display:flex;align-items:center;gap:.5rem}
+.theme-toggle{background:none;border:1px solid hsl(var(--border));border-radius:var(--radius);padding:.375rem;cursor:pointer;color:hsl(var(--foreground));display:flex;align-items:center;justify-content:center;transition:background .2s}
+.theme-toggle:hover{background:hsl(var(--secondary))}
+.theme-toggle svg{width:1.25rem;height:1.25rem}
+.menu-toggle{display:block;background:none;border:1px solid hsl(var(--border));border-radius:var(--radius);padding:.375rem;cursor:pointer;color:hsl(var(--foreground))}
+@media(min-width:768px){.menu-toggle{display:none}}
+.mobile-menu{display:none;padding:1rem;border-top:1px solid hsl(var(--border));background:inherit}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:.75rem 0;font-size:1rem;color:hsl(var(--foreground) / .7);text-decoration:none;border-bottom:1px solid hsl(var(--border))}
+.mobile-menu a:last-child{border-bottom:none}
+.hero-section{min-height:100vh;display:flex;align-items:center;padding-top:4rem}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:2rem;align-items:center}
+@media(min-width:768px){.hero-grid{grid-template-columns:1fr 1fr;gap:3rem}}
+.hero-image-wrapper{display:flex;justify-content:center;order:-1}
+@media(min-width:768px){.hero-image-wrapper{order:1}}
+.hero-image-container{position:relative;display:inline-block}
+.hero-image{width:16rem;height:16rem;border-radius:50%;object-fit:cover;border:4px solid hsl(var(--primary));box-shadow:0 20px 60px rgba(59,130,246,.15)}
+@media(min-width:768px){.hero-image{width:20rem;height:20rem}}
+.hero-initials{width:16rem;height:16rem;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#3b82f6,#6366f1,#a855f7);font-size:5rem;font-weight:700;color:#fff;border:4px solid hsl(var(--primary));box-shadow:0 20px 60px rgba(59,130,246,.15)}
+@media(min-width:768px){.hero-initials{width:20rem;height:20rem;font-size:6rem}}
+.hero-role-badge{position:absolute;bottom:1rem;right:-.5rem;background:hsl(var(--primary));color:hsl(var(--primary-foreground));padding:.5rem 1rem;border-radius:9999px;font-size:.75rem;font-weight:500;white-space:nowrap;box-shadow:0 4px 12px rgba(59,130,246,.3)}
+.hero-greeting{font-size:1.25rem;color:hsl(var(--foreground) / .7);margin-bottom:.5rem}
+.hero-name{font-size:2.5rem;font-weight:700;line-height:1.1;margin-bottom:.5rem}
+@media(min-width:768px){.hero-name{font-size:3.5rem}}
+.hero-title{font-size:1.125rem;color:hsl(var(--foreground) / .7);margin-bottom:.5rem}
+.hero-location{font-size:.95rem;color:hsl(var(--foreground) / .6);margin-bottom:1.5rem;display:flex;align-items:center;gap:.375rem}
+.hero-description{font-size:1rem;color:hsl(var(--foreground) / .7);margin-bottom:2rem;max-width:32rem;line-height:1.7}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:1rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 2rem;border-radius:9999px;font-weight:500;font-size:1rem;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:all .2s}
+.btn-primary{background:hsl(var(--primary));color:hsl(var(--primary-foreground));border-color:hsl(var(--primary))}
+.btn-primary:hover{opacity:.9}
+.btn-outline{background:transparent;color:hsl(var(--foreground));border-color:hsl(var(--border))}
+.btn-outline:hover{background:hsl(var(--secondary))}
+.profile-section{background:hsl(var(--background))}
+.profile-grid{display:grid;grid-template-columns:1fr;gap:2rem;max-width:56rem;margin:0 auto}
+@media(min-width:768px){.profile-grid{grid-template-columns:1fr 1fr}}
+.profile-card{position:relative}
+.profile-card-inner{height:100%;background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.3);border-radius:1rem;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.08);transition:all .3s}
+.dark .profile-card-inner{background:rgba(24,24,27,.6);border-color:rgba(255,255,255,.1)}
+.profile-card-inner:hover{transform:scale(1.01)}
+.profile-card-body{padding:2rem}
+.profile-subtitle{font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem;color:hsl(var(--foreground))}
+.profile-icon{width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;flex-shrink:0}
+.profile-text{color:hsl(var(--foreground) / .7);line-height:1.8;margin-bottom:1rem;font-size:.95rem}
+.skills-section{background:hsl(var(--secondary))}
+.skills-grid{display:grid;grid-template-columns:1fr;gap:2rem}
+@media(min-width:768px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.skills-grid{grid-template-columns:repeat(3,1fr)}}
+.skill-card{position:relative;overflow:hidden}
+.skill-card-inner{height:100%;background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.3);border-radius:1rem;box-shadow:0 20px 50px rgba(0,0,0,.1);transition:all .3s;position:relative;z-index:10}
+.dark .skill-card-inner{background:rgba(24,24,27,.6);border-color:rgba(255,255,255,.1)}
+.skill-card-inner:hover{transform:translateY(-.5rem);box-shadow:0 25px 60px rgba(0,0,0,.15)}
+.skill-card-header{height:.375rem;background:linear-gradient(to right,#3b82f6,#6366f1,#a855f7);border-radius:1rem 1rem 0 0}
+.skill-card-body{padding:2rem}
+.skill-category-title{font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;color:hsl(var(--foreground))}
+.skill-card:hover .skill-category-title{color:#3b82f6}
+.dark .skill-card:hover .skill-category-title{color:#60a5fa}
+.skill-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill-pill{display:inline-flex;align-items:center;gap:.375rem;padding:.375rem .75rem;border-radius:9999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:hsl(var(--foreground));font-size:.875rem;box-shadow:0 1px 2px rgba(0,0,0,.05);backdrop-filter:blur(12px);transition:all .3s}
+.dark .skill-pill{border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.05)}
+.experience-section{background:hsl(var(--background))}
+.timeline{position:relative;max-width:48rem;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:1rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#3b82f6,#6366f1,#a855f7)}
+@media(min-width:768px){.timeline::before{left:50%;transform:translateX(-50%)}}
+.timeline-item{position:relative;padding-left:3rem;padding-bottom:2.5rem}
+@media(min-width:768px){.timeline-item{padding-left:0;padding-right:calc(50% + 2rem);text-align:right}.timeline-item:nth-child(even){padding-left:calc(50% + 2rem);padding-right:0;text-align:left}}
+.timeline-dot{position:absolute;left:.375rem;top:.375rem;width:1.25rem;height:1.25rem;border-radius:50%;background:#3b82f6;border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.1);z-index:2}
+.dark .timeline-dot{border-color:hsl(var(--background))}
+@media(min-width:768px){.timeline-dot{left:50%;transform:translateX(-50%)}}
+.timeline-content{padding:1.25rem;background:rgba(255,255,255,.6);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.3);border-radius:1rem;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .3s}
+.dark .timeline-content{background:rgba(24,24,27,.6);border-color:rgba(255,255,255,.1)}
+.timeline-content:hover{transform:translateY(-.25rem);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.timeline-title{font-size:1.125rem;font-weight:600;color:hsl(var(--foreground))}
+.timeline-meta{font-size:.85rem;color:#3b82f6;font-weight:500;margin-top:.25rem}
+.timeline-org{font-size:.875rem;color:hsl(var(--foreground) / .7);margin-top:.125rem}
+.timeline-desc{margin-top:.75rem;font-size:.875rem;color:hsl(var(--foreground) / .65);line-height:1.6;padding-left:1.25rem}
+.timeline-desc li{margin-bottom:.375rem}
+.about-section{background:hsl(var(--secondary))}
+.about-grid{display:grid;grid-template-columns:1fr;gap:2rem;max-width:48rem;margin:0 auto}
+@media(min-width:768px){.about-grid{grid-template-columns:1fr 1fr}}
+.about-card{position:relative}
+.about-card-inner{height:100%;background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.3);border-radius:1rem;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.08);transition:all .3s}
+.dark .about-card-inner{background:rgba(24,24,27,.6);border-color:rgba(255,255,255,.1)}
+.about-card-inner:hover{transform:scale(1.01)}
+.about-card-body{padding:2rem}
+.about-subtitle{font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem;color:hsl(var(--foreground))}
+.about-icon{width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;flex-shrink:0}
+.cert-section{background:hsl(var(--background))}
+.cert-grid{display:grid;grid-template-columns:1fr;gap:.75rem}
+@media(min-width:768px){.cert-grid{grid-template-columns:repeat(2,1fr)}}
+.cert-item{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:.5rem;border:1px solid hsl(var(--border));transition:all .2s}
+.cert-item:hover{border-color:hsl(var(--primary));background:hsl(var(--primary) / .05)}
+.cert-icon{width:1.25rem;height:1.25rem;color:#3b82f6;flex-shrink:0}
+.pub-section{background:hsl(var(--secondary))}
+.pub-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:768px){.pub-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.pub-grid{grid-template-columns:repeat(4,1fr)}}
+.pub-card{cursor:pointer;position:relative}
+.pub-card-inner{height:100%;background:rgba(255,255,255,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.3);border-radius:1rem;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.08);transition:all .3s;display:flex;flex-direction:column}
+.dark .pub-card-inner{background:rgba(24,24,27,.6);border-color:rgba(255,255,255,.1)}
+.pub-card-inner:hover{transform:translateY(-.25rem);box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.pub-preview{position:relative;width:100%;padding-top:56%;overflow:hidden;background:hsl(var(--secondary))}
+.pub-preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.pub-card:hover .pub-preview img{transform:scale(1.06)}
+.pub-preview .pub-img-fallback{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;text-align:center;background:linear-gradient(135deg,#3b82f6,#6366f1)}
+.pub-preview .pub-img-fallback svg{width:2.5rem;height:2.5rem;margin-bottom:.75rem;opacity:.8;color:#fff}
+.pub-preview .pub-img-fallback span{color:#fff;font-size:.8rem;font-weight:500}
+.pub-body{padding:1rem 1rem .75rem;flex:1;display:flex;flex-direction:column}
+.pub-number{display:inline-flex;align-items:center;justify-content:center;width:1.75rem;height:1.75rem;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;font-size:.75rem;font-weight:700;margin-bottom:.5rem;flex-shrink:0}
+.pub-title{font-size:.85rem;font-weight:600;color:hsl(var(--foreground));line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pub-authors{font-size:.75rem;color:hsl(var(--foreground) / .6);margin-top:.375rem;font-style:italic}
+.pub-citation{font-size:.7rem;color:hsl(var(--foreground) / .5);margin-top:.5rem;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pub-doi{display:inline-block;margin-top:.5rem;font-size:.7rem;color:hsl(var(--primary));text-decoration:none;opacity:.7;transition:opacity .2s}
+.pub-doi:hover{opacity:1;text-decoration:underline}
+.scroll-top{position:fixed;bottom:5.5rem;right:1.25rem;z-index:40;width:2.75rem;height:2.75rem;border-radius:50%;background:hsl(var(--primary));color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(59,130,246,.35);opacity:0;transform:translateY(1rem);pointer-events:none;transition:all .3s}
+.scroll-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.scroll-top:hover{transform:translateY(-.25rem);box-shadow:0 6px 20px rgba(59,130,246,.45)}
+.scroll-top svg{width:1.25rem;height:1.25rem}
+.chat-toggle{position:fixed;bottom:1.25rem;right:1.25rem;z-index:40;width:3.5rem;height:3.5rem;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(99,102,241,.4);transition:all .3s}
+.chat-toggle:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(99,102,241,.5)}
+.chat-toggle svg{width:1.5rem;height:1.5rem}
+.chat-panel{position:fixed;bottom:5.25rem;right:1.25rem;z-index:41;width:20rem;max-height:28rem;background:hsl(var(--background));border:1px solid hsl(var(--border));border-radius:1rem;box-shadow:0 12px 48px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden;animation:chatIn .25s ease}
+.dark .chat-panel{border-color:rgba(255,255,255,.12)}
+.chat-panel.open{display:flex}
+@keyframes chatIn{from{opacity:0;transform:translateY(1rem) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.chat-head{background:linear-gradient(135deg,#3b82f6,#6366f1);color:#fff;padding:.75rem 1rem;display:flex;align-items:center;gap:.625rem;font-size:.9rem;font-weight:600;flex-shrink:0}
+.chat-head svg{width:1.25rem;height:1.25rem;flex-shrink:0}
+.chat-head span{flex:1}
+.chat-head-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:1.5rem;height:1.5rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:background .2s;flex-shrink:0}
+.chat-head-close:hover{background:rgba(255,255,255,.35)}
+.chat-body{flex:1;overflow-y:auto;padding:.75rem;display:flex;flex-direction:column;gap:.5rem;min-height:12rem;max-height:18rem}
+.chat-msg{max-width:85%;padding:.5rem .75rem;border-radius:.75rem;font-size:.8rem;line-height:1.5;animation:msgIn .2s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(.5rem)}to{opacity:1;transform:translateY(0)}}
+.chat-msg.bot{align-self:flex-start;background:hsl(var(--secondary));color:hsl(var(--foreground));border-bottom-left-radius:.25rem}
+.chat-msg.user{align-self:flex-end;background:hsl(var(--primary));color:hsl(var(--primary-foreground));border-bottom-right-radius:.25rem}
+.chat-questions{display:flex;flex-wrap:wrap;gap:.375rem;padding:.5rem .75rem .75rem;border-top:1px solid hsl(var(--border));flex-shrink:0}
+.chat-q-btn{font-size:.75rem;padding:.3rem .6rem;border-radius:9999px;border:1px solid hsl(var(--border));background:transparent;color:hsl(var(--foreground));cursor:pointer;transition:all .2s;white-space:nowrap}
+.chat-q-btn:hover{background:hsl(var(--primary) / .1);border-color:hsl(var(--primary))}
+.chat-footer{display:flex;align-items:center;gap:.5rem;padding:.5rem .75rem;border-top:1px solid hsl(var(--border));flex-shrink:0;font-size:.75rem;color:hsl(var(--foreground) / .6)}
+.chat-footer a{display:inline-flex;align-items:center;gap:.3rem;color:hsl(var(--primary));text-decoration:none;font-weight:500}
+.chat-footer a:hover{text-decoration:underline}
+.contact-section{background:hsl(var(--background))}
+.contact-subtitle{text-align:center;color:hsl(var(--foreground) / .7);margin-bottom:3rem;max-width:36rem;margin-left:auto;margin-right:auto}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;max-width:48rem;margin:0 auto}
+@media(min-width:768px){.contact-grid{grid-template-columns:repeat(2,1fr)}}
+.contact-card{display:flex;align-items:center;gap:.75rem;padding:1rem;border-radius:.5rem;border:1px solid hsl(var(--border));transition:all .2s;text-decoration:none;color:hsl(var(--foreground))}
+.contact-card:hover{border-color:hsl(var(--primary));background:hsl(var(--primary) / .05)}
+.contact-card svg{width:1.5rem;height:1.5rem;color:hsl(var(--primary));flex-shrink:0}
+.contact-card-label{font-weight:500}
+.contact-card-value{font-size:.875rem;color:hsl(var(--foreground) / .7)}
+.contact-cta{text-align:center;margin-top:2rem}
+.site-footer{background:hsl(var(--secondary));padding:3rem 0}
+.footer-inner{max-width:80rem;margin:0 auto;padding:0 1rem}
+@media(min-width:640px){.footer-inner{padding:0 1.5rem}}
+@media(min-width:1024px){.footer-inner{padding:0 2rem}}
+.footer-top{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+@media(min-width:768px){.footer-top{flex-direction:row;justify-content:space-between}}
+.footer-brand{text-align:center}
+@media(min-width:768px){.footer-brand{text-align:left}}
+.footer-name{font-size:1.25rem;font-weight:700;color:hsl(var(--foreground))}
+.footer-role{color:hsl(var(--foreground) / .7)}
+.footer-nav{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.footer-nav a{font-size:.875rem;color:hsl(var(--foreground) / .7);transition:color .2s}
+.footer-nav a:hover{color:hsl(var(--foreground))}
+.footer-divider{border:none;border-top:1px solid hsl(var(--border));margin:2rem 0}
+.footer-bottom{display:flex;flex-direction:column;align-items:center;gap:1rem}
+@media(min-width:768px){.footer-bottom{flex-direction:row;justify-content:space-between}}
+.footer-copyright{color:hsl(var(--foreground) / .7);font-size:.875rem}
+.animate-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.animate-in.visible{opacity:1;transform:translateY(0)}
+.animate-in-left{opacity:0;transform:translateX(-30px);transition:opacity .6s ease,transform .6s ease}
+.animate-in-left.visible{opacity:1;transform:translateX(0)}
+.animate-in-right{opacity:0;transform:translateX(30px);transition:opacity .6s ease,transform .6s ease}
+.animate-in-right.visible{opacity:1;transform:translateX(0)}
+.delay-100{transition-delay:.1s}
+.delay-200{transition-delay:.2s}
+.delay-300{transition-delay:.3s}
+.delay-400{transition-delay:.4s}
+.delay-500{transition-delay:.5s}
+.mem-item{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;font-size:.9rem}
+.mem-item::before{content:'';width:.375rem;height:.375rem;border-radius:50%;background:#3b82f6;flex-shrink:0}
+.lang-item{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid hsl(var(--border));font-size:.9rem}
+.lang-item:last-child{border-bottom:none}
+.lang-name{font-weight:500;color:hsl(var(--foreground))}
+.lang-level{color:hsl(var(--foreground) / .7)}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#home" class="site-logo"><span class="gradient-text">MA</span></a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-controls">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#profile">Profile</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main>
+  <section id="home" class="hero-section">
+    <div class="section-container hero-grid">
+      <div class="hero-image-wrapper">
+        <div class="hero-image-container">
+          <img src="avatar.webp" alt="Mohammed Alsiddig" class="hero-image" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="hero-initials" style="display:none">MA</div>
+          <span class="hero-role-badge">Senior Technical Consultant</span>
+        </div>
+      </div>
+      <div>
+        <p class="hero-greeting animate-in">Hello, I'm</p>
+        <h1 class="hero-name animate-in delay-100"><span class="gradient-text">Mohammed Alsiddig</span></h1>
+        <p class="hero-title animate-in delay-200">Senior Technical Consultant &amp; IT Infrastructure Specialist</p>
+        <p class="hero-location animate-in delay-200">Riyadh, Saudi Arabia</p>
+        <p class="hero-description animate-in delay-200">Results-driven Senior Technical Consultant with 10+ years of proven expertise in IT infrastructure, cloud solutions, and cybersecurity. Delivering resilient, secure enterprise environments through strategic thinking, automation, and cross-functional leadership.</p>
+        <div class="hero-buttons animate-in delay-300">
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+          <a href="#" class="btn btn-outline" id="downloadCvBtn">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="profile" class="profile-section">
+    <div class="section-container">
+      <h2 class="section-title animate-in">My <span class="gradient-text">Profile</span></h2>
+      <div class="profile-grid">
+        <div class="profile-card animate-in-left">
+          <div class="profile-card-inner">
+            <div class="profile-card-body">
+              <h3 class="profile-subtitle">
+                <span class="profile-icon" style="background:#dbeafe;color:#2563eb;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                Who I Am
+              </h3>
+              <p class="profile-text">Results-driven Senior Technical Consultant with 10+ years of proven expertise in IT infrastructure, systems, and cybersecurity. Adept at architecting scalable systems, driving automation, and embedding cybersecurity into operations to ensure performance and compliance.</p>
+              <p class="profile-text">Skilled in leading cross-functional teams, translating complex technical challenges into business outcomes, and optimizing multi-cloud ecosystems. Recognized for strategic thinking, hands-on expertise, and a commitment to continuous improvement that enhances organizational efficiency and innovation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="profile-card animate-in-right">
+          <div class="profile-card-inner">
+            <div class="profile-card-body">
+              <h3 class="profile-subtitle">
+                <span class="profile-icon" style="background:#fce7f3;color:#db2777;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </span>
+                Quick Facts
+              </h3>
+              <div class="lang-item"><span class="lang-name">Experience</span><span class="lang-level">10+ Years</span></div>
+              <div class="lang-item"><span class="lang-name">Focus Areas</span><span class="lang-level">IT Infrastructure, Cloud, Cybersecurity</span></div>
+              <div class="lang-item"><span class="lang-name">Certifications</span><span class="lang-level">7+ Professional</span></div>
+              <div class="lang-item"><span class="lang-name">Publications</span><span class="lang-level">7 Research Papers</span></div>
+              <div class="lang-item"><span class="lang-name">Languages</span><span class="lang-level">Arabic, English, French</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills-section">
+    <div class="section-container">
+      <h2 class="section-title animate-in">Areas of <span class="gradient-text">Expertise</span></h2>
+      <div class="skills-grid">
+        <div class="skill-card animate-in">
+          <div class="skill-card-inner">
+            <div class="skill-card-header"></div>
+            <div class="skill-card-body">
+              <h3 class="skill-category-title">Operating Systems</h3>
+              <div class="skill-pills">
+                <span class="skill-pill">Linux</span>
+                <span class="skill-pill">Windows Server</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card animate-in">
+          <div class="skill-card-inner">
+            <div class="skill-card-header"></div>
+            <div class="skill-card-body">
+              <h3 class="skill-category-title">Cloud Computing</h3>
+              <div class="skill-pills">
+                <span class="skill-pill">GCP</span>
+                <span class="skill-pill">AWS</span>
+                <span class="skill-pill">Microsoft Azure</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card animate-in">
+          <div class="skill-card-inner">
+            <div class="skill-card-header"></div>
+            <div class="skill-card-body">
+              <h3 class="skill-category-title">DevSecOps</h3>
+              <div class="skill-pills">
+                <span class="skill-pill">Docker</span>
+                <span class="skill-pill">Kubernetes</span>
+                <span class="skill-pill">Git</span>
+                <span class="skill-pill">Jenkins</span>
+                <span class="skill-pill">SonarQube</span>
+                <span class="skill-pill">Trivy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card animate-in">
+          <div class="skill-card-inner">
+            <div class="skill-card-header"></div>
+            <div class="skill-card-body">
+              <h3 class="skill-category-title">Database</h3>
+              <div class="skill-pills">
+                <span class="skill-pill">MS SQL</span>
+                <span class="skill-pill">MySQL</span>
+                <span class="skill-pill">PostgreSQL</span>
+                <span class="skill-pill">Couchbase</span>
+                <span class="skill-pill">NoSQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card animate-in">
+          <div class="skill-card-inner">
+            <div class="skill-card-header"></div>
+            <div class="skill-card-body">
+              <h3 class="skill-category-title">Automation &amp; Scripting</h3>
+              <div class="skill-pills">
+                <span class="skill-pill">Ansible</span>
+                <span class="skill-pill">PowerShell</span>
+                <span class="skill-pill">Bash</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card animate-in">
+          <div class="skill-card-inner">
+            <div class="skill-card-header"></div>
+            <div class="skill-card-body">
+              <h3 class="skill-category-title">Networking &amp; Security</h3>
+              <div class="skill-pills">
+                <span class="skill-pill">Firewall</span>
+                <span class="skill-pill">Proxy</span>
+                <span class="skill-pill">Load Balancer</span>
+                <span class="skill-pill">EDR</span>
+                <span class="skill-pill">SIEM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card animate-in">
+          <div class="skill-card-inner">
+            <div class="skill-card-header"></div>
+            <div class="skill-card-body">
+              <h3 class="skill-category-title">Virtualization</h3>
+              <div class="skill-pills">
+                <span class="skill-pill">VMware ESXi</span>
+                <span class="skill-pill">Hyper-V</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card animate-in">
+          <div class="skill-card-inner">
+            <div class="skill-card-header"></div>
+            <div class="skill-card-body">
+              <h3 class="skill-category-title">Monitoring &amp; Analytics</h3>
+              <div class="skill-pills">
+                <span class="skill-pill">ELK Stack</span>
+                <span class="skill-pill">Prometheus</span>
+                <span class="skill-pill">Grafana</span>
+                <span class="skill-pill">Power BI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card animate-in">
+          <div class="skill-card-inner">
+            <div class="skill-card-header"></div>
+            <div class="skill-card-body">
+              <h3 class="skill-category-title">Web Development</h3>
+              <div class="skill-pills">
+                <span class="skill-pill">WordPress</span>
+                <span class="skill-pill">Moodle (LMS)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="experience-section">
+    <div class="section-container">
+      <h2 class="section-title animate-in">Work <span class="gradient-text">Experience</span></h2>
+      <div class="timeline">
+        <div class="timeline-item animate-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Senior Technical Consultant (Customer Success Engineer)</h3>
+            <p class="timeline-meta">Nov 2023 - Present</p>
+            <p class="timeline-org">RealTyme | Geneva, Switzerland (NCGR Project)</p>
+            <ul class="timeline-desc">
+              <li>Deploy and manage secure communication platform utilized by 5000 users across 90+ entities on Linux servers, ensuring system stability, scalability, and uninterrupted operations.</li>
+              <li>Lead day-to-day service delivery and incident resolution to minimize downtime and address vulnerabilities in deployed applications.</li>
+              <li>Automate installation, updates, and configuration workflows using Ansible and Docker, improving deployment efficiency and reducing manual effort.</li>
+              <li>Provide L3 technical support and ensure consistent adherence to defined SLAs, maintaining high service reliability.</li>
+              <li>Analyze client requirements, design tailored architecture solutions, and recommend improvements aligned with business and technical objectives.</li>
+              <li>Collaborate closely with executives, business teams, and cross-functional stakeholders to drive product adoption, capture feedback, and shape the customer success roadmap.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item animate-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Information Technology Specialist</h3>
+            <p class="timeline-meta">June 2021 - Oct 2023</p>
+            <p class="timeline-org">QSS | Riyadh, Saudi Arabia</p>
+            <ul class="timeline-desc">
+              <li>Designed and administered enterprise-grade data networks and IT infrastructure, delivering secure, high-performance environments for mission-critical operations.</li>
+              <li>Implemented end-to-end monitoring and analytics via ELK Stack to enhance visibility, preempt incidents, and improve uptime across all systems.</li>
+              <li>Deployed full Web Application ecosystems (ESXi, Virtual Machines, Databases, Web Servers, Load Balancers, WAFs), customizing configurations to meet business and client-specific requirements.</li>
+              <li>Designed and deployed PoC environments for an in-house Cybersecurity Platform used by SOC, IR, and Threat Intelligence teams, implementing both on-prem and cloud (AWS/GCP) architectures.</li>
+              <li>Shaped comprehensive infrastructure reports and optimization strategies covering performance tuning, capacity management, and resource utilization.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item animate-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">IT Director</h3>
+            <p class="timeline-meta">July 2019 - March 2021</p>
+            <p class="timeline-org">Al-Yarmouk College | Khartoum, Sudan</p>
+            <ul class="timeline-desc">
+              <li>Directed IT operations overseeing 5+ team members, driving technology modernization initiatives that increased service availability by 35% and reduced incident resolution time by 25%.</li>
+              <li>Designed and implemented training programs on emerging technologies and Cybersecurity Awareness, resulting in a 40% improvement in staff technical competency and compliance posture.</li>
+              <li>Established robust quality assurance and procurement standards, cutting IT procurement costs by 20% through strategic vendor negotiations and lifecycle management.</li>
+              <li>Managed enterprise-wide system upgrades, migrations, and infrastructure refreshes, ensuring zero business disruption across all mission-critical environments.</li>
+              <li>Coordinated with external vendors and service providers to maintain high service availability and verify fulfillment of contractual obligations.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item animate-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Lecturer (Part-time)</h3>
+            <p class="timeline-meta">November 2016 - March 2021</p>
+            <p class="timeline-org">Al-Yarmouk College | Khartoum, Sudan</p>
+            <ul class="timeline-desc">
+              <li>Prepared and delivered structured lectures and lab sessions, emphasizing applied learning and real-world IT practices.</li>
+              <li>Conducted both classroom and LMS-based lectures and examinations for flexible learning.</li>
+              <li>Led tutorial sessions, seminars, and presentations to enhance student engagement and understanding.</li>
+              <li>Developed and supervised examinations, ensuring accurate evaluation and fair assessment of student progress.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item animate-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Network Administrator</h3>
+            <p class="timeline-meta">September 2015 - June 2019</p>
+            <p class="timeline-org">Al-Yarmouk College | Khartoum, Sudan</p>
+            <ul class="timeline-desc">
+              <li>Designed, implemented, and maintained campus-wide network infrastructure, supported by full documentation and diagrams.</li>
+              <li>Managed Windows Server roles (AD, DNS, DHCP, File, Group Policy, WSUS, WDS, Print, Remote Assistance) for seamless operations.</li>
+              <li>Applied and maintained network security policies and filters, improving availability and reducing traffic bottlenecks by 25%.</li>
+              <li>Designed and maintained the college website, ensuring consistent updates and optimal functionality.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="section-container">
+      <h2 class="section-title animate-in">About <span class="gradient-text">Me</span></h2>
+      <div class="about-grid">
+        <div class="about-card animate-in-left">
+          <div class="about-card-inner">
+            <div class="about-card-body">
+              <h3 class="about-subtitle">
+                <span class="about-icon" style="background:#dbeafe;color:#2563eb;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                </span>
+                Education
+              </h3>
+              <div style="display:flex;gap:1rem;margin-bottom:1rem">
+                <div style="width:1.25rem;height:1.25rem;border-radius:50%;background:#3b82f6;border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.1);flex-shrink:0;margin-top:.25rem"></div>
+                <div style="flex:1;padding:.75rem 1rem;background:rgba(255,255,255,.5);border-radius:.5rem;border:1px solid hsl(var(--border));box-shadow:0 1px 3px rgba(0,0,0,.05)">
+                  <h4 style="font-size:1rem;font-weight:600;color:hsl(var(--foreground))">M.Sc. Communication Engineering</h4>
+                  <p style="font-size:.85rem;color:#3b82f6;font-weight:500;margin-top:.25rem">2018</p>
+                  <p style="font-size:.875rem;color:hsl(var(--foreground) / .7);margin-top:.25rem">University of Science &amp; Technology</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem">
+                <div style="width:1.25rem;height:1.25rem;border-radius:50%;background:#7c3aed;border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.1);flex-shrink:0;margin-top:.25rem"></div>
+                <div style="flex:1;padding:.75rem 1rem;background:rgba(255,255,255,.5);border-radius:.5rem;border:1px solid hsl(var(--border));box-shadow:0 1px 3px rgba(0,0,0,.05)">
+                  <h4 style="font-size:1rem;font-weight:600;color:hsl(var(--foreground))">B.Sc. Communication Systems Engineering</h4>
+                  <p style="font-size:.85rem;color:#7c3aed;font-weight:500;margin-top:.25rem">2014</p>
+                  <p style="font-size:.875rem;color:hsl(var(--foreground) / .7);margin-top:.25rem">University of Science &amp; Technology</p>
+                </div>
+              </div>
+              <h3 class="about-subtitle" style="margin-top:2rem">
+                <span class="about-icon" style="background:#ede9fe;color:#7c3aed;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </span>
+                Languages
+              </h3>
+              <div class="lang-item"><span class="lang-name">Arabic</span><span class="lang-level">Mother Language</span></div>
+              <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Proficient and Fluent</span></div>
+              <div class="lang-item"><span class="lang-name">French</span><span class="lang-level">Beginner</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-card animate-in-right">
+          <div class="about-card-inner">
+            <div class="about-card-body">
+              <h3 class="about-subtitle">
+                <span class="about-icon" style="background:#fce7f3;color:#db2777;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                </span>
+                Certifications
+              </h3>
+              <div class="cert-item" style="margin-bottom:.5rem;padding:.5rem .75rem">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M12 2v4m0 0l-2-1m2 1l2-1M6 12h4m4 0h4M4 8l2 2m12-2l-2 2"/></svg>
+                <div>
+                  <div style="font-weight:500;color:hsl(var(--foreground));font-size:.85rem">Ethical Hacking Essentials (EHE)</div>
+                  <div style="font-size:.75rem;color:hsl(var(--foreground) / .6)">EC-Council</div>
+                </div>
+              </div>
+              <div class="cert-item" style="margin-bottom:.5rem;padding:.5rem .75rem">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M12 2v4m0 0l-2-1m2 1l2-1M6 12h4m4 0h4M4 8l2 2m12-2l-2 2"/></svg>
+                <div>
+                  <div style="font-weight:500;color:hsl(var(--foreground));font-size:.85rem">Network Defense Essentials (NDE)</div>
+                  <div style="font-size:.75rem;color:hsl(var(--foreground) / .6)">EC-Council</div>
+                </div>
+              </div>
+              <div class="cert-item" style="margin-bottom:.5rem;padding:.5rem .75rem">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M12 2v4m0 0l-2-1m2 1l2-1M6 12h4m4 0h4M4 8l2 2m12-2l-2 2"/></svg>
+                <div>
+                  <div style="font-weight:500;color:hsl(var(--foreground));font-size:.85rem">CompTIA Security+ (SY0-601)</div>
+                  <div style="font-size:.75rem;color:hsl(var(--foreground) / .6)">Cybrary</div>
+                </div>
+              </div>
+              <div class="cert-item" style="margin-bottom:.5rem;padding:.5rem .75rem">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M12 2v4m0 0l-2-1m2 1l2-1M6 12h4m4 0h4M4 8l2 2m12-2l-2 2"/></svg>
+                <div>
+                  <div style="font-weight:500;color:hsl(var(--foreground));font-size:.85rem">CompTIA Network+ (N10-007)</div>
+                  <div style="font-size:.75rem;color:hsl(var(--foreground) / .6)">Cybrary</div>
+                </div>
+              </div>
+              <div class="cert-item" style="margin-bottom:.5rem;padding:.5rem .75rem">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M12 2v4m0 0l-2-1m2 1l2-1M6 12h4m4 0h4M4 8l2 2m12-2l-2 2"/></svg>
+                <div>
+                  <div style="font-weight:500;color:hsl(var(--foreground));font-size:.85rem">CCNA</div>
+                  <div style="font-size:.75rem;color:hsl(var(--foreground) / .6)">Work Plus Training Center</div>
+                </div>
+              </div>
+              <div class="cert-item" style="margin-bottom:.5rem;padding:.5rem .75rem">
+                <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><path d="M12 2v4m0 0l-2-1m2 1l2-1M6 12h4m4 0h4M4 8l2 2m12-2l-2 2"/></svg>
+                <div>
+                  <div style="font-weight:500;color:hsl(var(--foreground));font-size:.85rem">MCSE</div>
+                  <div style="font-size:.75rem;color:hsl(var(--foreground) / .6)">Self-study</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications" class="pub-section">
+    <div class="section-container">
+      <h2 class="section-title animate-in">Scientific <span class="gradient-text">Publications</span></h2>
+      <p style="text-align:center;color:hsl(var(--foreground) / .6);margin-bottom:2rem;font-size:.9rem">Click on any publication to read the full paper</p>
+      <div class="pub-grid" id="pubGrid">
+        <div class="pub-card animate-in" data-pub="0"><div class="pub-card-inner"><div class="pub-preview"><img src="publications/1.jpeg" alt="Publication 1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="pub-img-fallback"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span>Click to Read</span></div></div><div class="pub-body"><div class="pub-number">1</div><div class="pub-title">Design Optimization of Tracking Area List in LTE Using 2D Markov Model</div><div class="pub-authors">Mohammed Daffalla Elradi, Lamia Osman Widaa</div><div class="pub-citation">Networks, Vol. 5, No. 2, 2019, pp. 52-56.</div><a class="pub-doi" href="https://doi.org/10.11648/j.awcn.20190502.12" target="_blank" rel="noopener">View on Publisher Site →</a></div></div></div>
+        <div class="pub-card animate-in" data-pub="1"><div class="pub-card-inner"><div class="pub-preview"><img src="publications/2.jpeg" alt="Publication 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="pub-img-fallback"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span>Click to Read</span></div></div><div class="pub-body"><div class="pub-number">2</div><div class="pub-title">Cyber Security Awareness among Students and Faculty Members in a Sudanese College</div><div class="pub-authors">Elradi, M., Altigani, A., & Abaker, O.</div><div class="pub-citation">Electrical Science & Engineering, 2(2) (2020).</div><a class="pub-doi" href="https://doi.org/10.30564/ese.v2i2.2477" target="_blank" rel="noopener">View on Publisher Site →</a></div></div></div>
+        <div class="pub-card animate-in" data-pub="2"><div class="pub-card-inner"><div class="pub-preview"><img src="publications/3.png" alt="Publication 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="pub-img-fallback"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span>Click to Read</span></div></div><div class="pub-body"><div class="pub-number">3</div><div class="pub-title">Ransomware Attack: Rescue-checklist Cyber Security Awareness Program</div><div class="pub-authors">Elradi, Mohammed; Mohamed, Mohamed; Ali, Mohammed</div><div class="pub-citation">Artificial Intelligence Advances, 3 (2021).</div><a class="pub-doi" href="https://doi.org/10.30564/aia.v3i1.3162" target="_blank" rel="noopener">View on Publisher Site →</a></div></div></div>
+        <div class="pub-card animate-in" data-pub="3"><div class="pub-card-inner"><div class="pub-preview"><img src="publications/4.jpeg" alt="Publication 4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="pub-img-fallback"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span>Click to Read</span></div></div><div class="pub-body"><div class="pub-number">4</div><div class="pub-title">Cyber Security Professionals’ Challenges: A Proposed Integrated Platform Solution</div><div class="pub-authors">Elradi, M.</div><div class="pub-citation">Electrical Science & Engineering, 3(2).</div><a class="pub-doi" href="https://doi.org/10.30564/ese.v3i2.3376" target="_blank" rel="noopener">View on Publisher Site →</a></div></div></div>
+        <div class="pub-card animate-in" data-pub="4"><div class="pub-card-inner"><div class="pub-preview"><img src="publications/5.jpeg" alt="Publication 5" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="pub-img-fallback"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span>Click to Read</span></div></div><div class="pub-body"><div class="pub-number">5</div><div class="pub-title">Elastic Stack: A Reliable Tool for Highly-Demanding Data Insight</div><div class="pub-authors">Mohammed Daffalla Elradi</div><div class="pub-citation">Acta Scientific Computer Sciences 4.10 (2022) 03-11.</div><a class="pub-doi" href="https://actascientific.com/ASCS/ASCS-04-0331.php" target="_blank" rel="noopener">View on Publisher Site →</a></div></div></div>
+        <div class="pub-card animate-in" data-pub="5"><div class="pub-card-inner"><div class="pub-preview"><img src="publications/6.jpeg" alt="Publication 6" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="pub-img-fallback"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span>Click to Read</span></div></div><div class="pub-body"><div class="pub-number">6</div><div class="pub-title">Ansible: A Reliable Tool for Automation</div><div class="pub-authors">Mohammed Daffalla Elradi</div><div class="pub-citation">Electrical and Computer Engineering Studies, Vol. 2, Issue 1, No. 4.</div><a class="pub-doi" href="https://doi.org/10.58396/eces020104" target="_blank" rel="noopener">View on Publisher Site →</a></div></div></div>
+        <div class="pub-card animate-in" data-pub="6"><div class="pub-card-inner"><div class="pub-preview"><img src="publications/7.jpeg" alt="Publication 7" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="pub-img-fallback"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span>Click to Read</span></div></div><div class="pub-body"><div class="pub-number">7</div><div class="pub-title">Prometheus & Grafana: A Metrics-focused Monitoring Stack</div><div class="pub-authors">Mohammed Daffalla Elradi</div><div class="pub-citation">Journal of Computer Allied Intelligence (JCAI, ISSN: 2584-2676), 3(3) 28-39.</div><a class="pub-doi" href="https://doi.org/10.69996/jcai.2025015" target="_blank" rel="noopener">View on Publisher Site →</a></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="memberships" class="experience-section">
+    <div class="section-container">
+      <h2 class="section-title animate-in">Memberships &amp; <span class="gradient-text">Affiliations</span></h2>
+      <div style="max-width:32rem;margin:0 auto">
+        <div class="mem-item animate-in">Member of IAENG (International Association of Engineers)</div>
+        <div class="mem-item animate-in">Member of IEEE Technical Community on Services Computing (TCSC)</div>
+        <div class="mem-item animate-in">Member of the Sudanese Engineering Council</div>
+        <div class="mem-item animate-in">Member of the Saudi Council of Engineers</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="section-container">
+      <h2 class="section-title animate-in">Get In <span class="gradient-text">Touch</span></h2>
+      <p class="contact-subtitle animate-in delay-100">Feel free to reach out for collaborations, opportunities, or just to say hi!</p>
+      <div class="contact-grid">
+        <a href="tel:+966505397588" class="contact-card animate-in" style="transition-delay:.4s">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <div class="contact-card-label">Phone</div>
+            <div class="contact-card-value">+966 505397588</div>
+          </div>
+        </a>
+        <a href="mailto:mohd_daf_elradi@hotmail.com" class="contact-card animate-in" style="transition-delay:.55s">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div>
+            <div class="contact-card-label">Email</div>
+            <div class="contact-card-value">mohd_daf_elradi@hotmail.com</div>
+          </div>
+        </a>
+        <a href="#" class="contact-card animate-in" style="transition-delay:.7s">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <div class="contact-card-label">Location</div>
+            <div class="contact-card-value">Riyadh, Saudi Arabia</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/mohammed-alsiddig" target="_blank" rel="noopener" class="contact-card animate-in" style="transition-delay:.85s">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <div>
+            <div class="contact-card-label">LinkedIn</div>
+            <div class="contact-card-value">mohammed-alsiddig</div>
+          </div>
+        </a>
+      </div>
+      <div class="contact-cta">
+        <a href="mailto:mohd_daf_elradi@hotmail.com" class="btn btn-primary">Send me an email</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-name">Mohammed Alsiddig</div>
+        <div class="footer-role">Senior Technical Consultant</div>
+      </div>
+      <div class="footer-nav">
+        <a href="#home">Home</a>
+        <a href="#profile">Profile</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2026 Mohammed Alsiddig. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<button class="chat-toggle" id="chatToggle" aria-label="Chat">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Ask about Mohammed</span>
+    <button class="chat-head-close" id="chatClose">&times;</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-msg bot">Hi! Ask me anything about Mohammed's experience, skills, certifications, or background.</div>
+  </div>
+  <div class="chat-questions" id="chatQuestions">
+    <button class="chat-q-btn" data-q="experience">What is his experience?</button>
+    <button class="chat-q-btn" data-q="skills">What are his skills?</button>
+    <button class="chat-q-btn" data-q="certifications">His certifications?</button>
+    <button class="chat-q-btn" data-q="education">His education?</button>
+    <button class="chat-q-btn" data-q="languages">Languages?</button>
+    <button class="chat-q-btn" data-q="contact">How to contact?</button>
+  </div>
+  <div class="chat-footer">
+    <span>Chat via</span>
+    <a href="https://wa.me/966505397588" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  const themeToggle = document.getElementById('themeToggle');
+  const sunIcon = document.getElementById('sunIcon');
+  const moonIcon = document.getElementById('moonIcon');
+
+  function setTheme(dark) {
+    if (dark) {
+      document.documentElement.classList.add('dark');
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      sunIcon.style.display = 'block';
+      moonIcon.style.display = 'none';
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  if (localStorage.getItem('theme') === 'dark' ||
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    setTheme(true);
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      setTheme(!document.documentElement.classList.contains('dark'));
+    });
+  }
+
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function() {
+      mobileMenu.classList.toggle('open');
+    });
+  }
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('#navLinks a');
+
+  function updateActiveLink() {
+    let current = '';
+    sections.forEach(function(section) {
+      const top = section.offsetTop - 120;
+      if (window.scrollY >= top) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(function(link) {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveLink);
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        mobileMenu.classList.remove('open');
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  const animateElements = document.querySelectorAll('.animate-in, .animate-in-left, .animate-in-right');
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  animateElements.forEach(function(el) {
+    observer.observe(el);
+  });
+
+  var pubData = [
+    {num:1,file:'publications/1.pdf',doi:'https://doi.org/10.11648/j.awcn.20190502.12',full:'Networks, Vol. 5, No. 2, 2019, pp. 52-56.'},
+    {num:2,file:'publications/2.pdf',doi:'https://doi.org/10.30564/ese.v2i2.2477',full:'Electrical Science & Engineering, 2(2) (2020).'},
+    {num:3,file:'publications/3.pdf',doi:'https://doi.org/10.30564/aia.v3i1.3162',full:'Artificial Intelligence Advances, 3 (2021).'},
+    {num:4,file:'publications/4.pdf',doi:'https://doi.org/10.30564/ese.v3i2.3376',full:'Electrical Science & Engineering, 3(2).'},
+    {num:5,file:'publications/5.pdf',doi:'https://actascientific.com/ASCS/ASCS-04-0331.php',full:'Acta Scientific Computer Sciences 4.10 (2022) 03-11.'},
+    {num:6,file:'publications/6.pdf',doi:'https://doi.org/10.58396/eces020104',full:'Electrical and Computer Engineering Studies, Vol. 2, Issue 1, No. 4.'},
+    {num:7,file:'publications/7.pdf',doi:'https://doi.org/10.69996/jcai.2025015',full:'Journal of Computer Allied Intelligence (JCAI, ISSN: 2584-2676), 3(3) 28-39.'}
+  ];
+
+  document.querySelectorAll('.pub-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var idx = parseInt(this.getAttribute('data-pub'));
+      var pub = pubData[idx];
+      var w = Math.round(screen.availWidth * 0.6);
+      var h = Math.round(screen.availHeight * 0.6);
+      var left = Math.round((screen.availWidth - w) / 2);
+      var top = Math.round((screen.availHeight - h) / 2);
+      window.open(pub.file, 'pub' + pub.num, 'width=' + w + ',height=' + h + ',left=' + left + ',top=' + top + ',scrollbars=yes,resizable=yes');
+    });
+  });
+
+  document.getElementById('downloadCvBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    var w = Math.round(screen.availWidth * 0.6);
+    var h = Math.round(screen.availHeight * 0.6);
+    var left = Math.round((screen.availWidth - w) / 2);
+    var top = Math.round((screen.availHeight - h) / 2);
+    window.open('Mohammed Alsiddig Resume.pdf', 'cv', 'width=' + w + ',height=' + h + ',left=' + left + ',top=' + top + ',scrollbars=yes,resizable=yes');
+  });
+
+  var scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', function() {
+    scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+  });
+  scrollTopBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var chatToggle = document.getElementById('chatToggle');
+  var chatPanel = document.getElementById('chatPanel');
+  var chatClose = document.getElementById('chatClose');
+  var chatBody = document.getElementById('chatBody');
+
+  chatToggle.addEventListener('click', function() {
+    chatPanel.classList.toggle('open');
+  });
+  chatClose.addEventListener('click', function() {
+    chatPanel.classList.remove('open');
+  });
+
+  var chatQA = {
+    experience: 'Mohammed has 10+ years of experience in IT infrastructure, cloud solutions, and cybersecurity. He is currently a Senior Technical Consultant at RealTyme (Geneva), previously an IT Specialist at QSS (Riyadh), IT Director and Network Administrator at Al-Yarmouk College (Sudan), and a part-time Lecturer.',
+    skills: 'His expertise spans Operating Systems (Linux, Windows Server), Cloud (GCP, AWS, Azure), DevSecOps (Docker, Kubernetes, Jenkins, SonarQube, Trivy), Databases (MS SQL, MySQL, PostgreSQL, Couchbase), Automation (Ansible, PowerShell, Bash), Networking & Security (Firewall, Proxy, Load Balancer, EDR, SIEM), Virtualization (VMware ESXi, Hyper-V), Monitoring (ELK, Prometheus, Grafana, Power BI), and Web Dev (WordPress, Moodle).',
+    certifications: 'He holds certifications including: Ethical Hacking Essentials (EHE) and Network Defense Essentials (NDE) from EC-Council, CompTIA Security+ and Network+ via Cybrary, CCNA from Work Plus Training Center, and MCSE (self-study).',
+    education: 'Mohammed holds an M.Sc. in Communication Engineering (2018) and a B.Sc. in Communication Systems Engineering (2014), both from the University of Science & Technology.',
+    languages: 'He speaks Arabic (mother language), English (proficient and fluent), and French (beginner).',
+    contact: 'You can reach Mohammed at +966 505397588, email mohd_daf_elradi@hotmail.com, or connect on LinkedIn at /in/mohammed-alsiddig.'
+  };
+
+  document.querySelectorAll('.chat-q-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var key = this.getAttribute('data-q');
+      var answer = chatQA[key];
+      if (!answer) return;
+      var userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg user';
+      userMsg.textContent = this.textContent;
+      chatBody.appendChild(userMsg);
+      var botMsg = document.createElement('div');
+      botMsg.className = 'chat-msg bot';
+      botMsg.textContent = answer;
+      chatBody.appendChild(botMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
