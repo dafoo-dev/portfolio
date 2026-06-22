@@ -903,11 +903,7 @@ img{max-width:100%;height:auto}
     card.addEventListener('click', function() {
       var idx = parseInt(this.getAttribute('data-pub'));
       var pub = pubData[idx];
-      var w = Math.round(screen.availWidth * 0.6);
-      var h = Math.round(screen.availHeight * 0.6);
-      var left = Math.round((screen.availWidth - w) / 2);
-      var top = Math.round((screen.availHeight - h) / 2);
-      window.open(pub.file, 'pub' + pub.num, 'width=' + w + ',height=' + h + ',left=' + left + ',top=' + top + ',scrollbars=yes,resizable=yes');
+      window.open(pub.file, '_blank');
     });
   });
 
